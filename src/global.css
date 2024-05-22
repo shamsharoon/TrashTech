@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;700;800;900&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-outfit: Outfit;
+
+  /* font sizes */
+  --font-size-29xl: 48px;
+  --font-size-77xl: 96px;
+  --font-size-10xl: 29px;
+  --font-size-45xl: 64px;
+  --font-size-19xl: 38px;
+  --font-size-32xl: 51px;
+  --font-size-xl: 20px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-palegoldenrod: #cae4a5;
+  --color-lightgreen: #afd579;
+  --color-yellowgreen-100: #8dc740;
+  --color-yellowgreen-200: #8cc63f;
+
+  /* Gaps */
+  --gap-xl: 20px;
+
+  /* Paddings */
+  --padding-xl: 20px;
+  --padding-23xl: 42px;
+  --padding-lgi: 19px;
+  --padding-65xl: 84px;
+  --padding-10xl: 29px;
+  --padding-3xs: 10px;
+  --padding-mini: 15px;
+  --padding-4xs: 9px;
+
+  /* Border radiuses */
+  --br-90xl-5: 109.5px;
+}

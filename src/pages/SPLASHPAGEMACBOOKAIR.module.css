@@ -1,0 +1,95 @@
+.buttonContainerChild {
+  height: 80px;
+  width: 303px;
+  position: relative;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: var(--br-90xl-5);
+  background-color: var(--color-palegoldenrod);
+  display: none;
+}
+.learnMore {
+  flex: 1;
+  position: relative;
+  font-size: var(--font-size-29xl);
+  letter-spacing: -0.03em;
+  line-height: 94.2%;
+  font-weight: 300;
+  font-family: var(--font-outfit);
+  color: var(--color-white);
+  text-align: center;
+  z-index: 1;
+}
+.buttonContainer,
+.intro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.buttonContainer {
+  position: relative;
+  scale: 1.6;
+  top: 338px;
+  left: 90px;
+  cursor: pointer;
+  border: 0;
+  padding: 18px 41px 17px var(--padding-23xl);
+  background-color: var(--color-palegoldenrod);
+  width: 303px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: var(--br-90xl-5);
+  flex-direction: row;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+.buttonContainer:hover {
+  background-color: #b0cc8c;
+}
+.intro {
+  width: 512px;
+  flex-direction: column;
+  gap: 85px;
+  max-width: 100%;
+}
+.content,
+.splashPageMacbookAir {
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+.content {
+  width: 768px;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 var(--padding-xl);
+  max-width: 100%;
+}
+.splashPageMacbookAir {
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 0 250px;
+  gap: 172px;
+  line-height: normal;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 675px) {
+  .intro {
+    gap: 42px;
+  }
+  .splashPageMacbookAir {
+    gap: 86px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .buttonContainer {
+    padding-left: var(--padding-xl);
+    box-sizing: border-box;
+  }
+  .intro {
+    gap: 21px;
+  }
+  .splashPageMacbookAir {
+    gap: 43px;
+  }
+}

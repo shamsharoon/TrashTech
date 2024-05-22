@@ -1,0 +1,101 @@
+.moreAbout,
+.wantToLearn {
+  margin: 0;
+}
+.recycling,
+.wantToLearnContainer {
+  letter-spacing: -0.03em;
+  font-family: inherit;
+  display: inline-block;
+}
+.wantToLearnContainer {
+  margin: 0;
+  height: 161px;
+  flex: 1;
+  top: 50px;
+  position: relative;
+  font-size: 100px;
+  line-height: 94.2%;
+  font-weight: 700;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  max-width: 100%;
+}
+.recycling {
+  margin: 0 !important;
+  scale: 1.75;
+  width: 512px;
+  position: absolute;
+  bottom: -320px;
+  left: 184px;
+  font-size: var(--font-size-77xl);
+  font-weight: 900;
+  background: linear-gradient(180deg, #8cc63f, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 1;
+}
+.frameChild {
+  position: absolute;
+  top: 865px;
+  left: 843px;
+  width: 87px;
+  height: 48px;
+  object-fit: contain;
+}
+.backgroundShape {
+  position: absolute;
+  top: 857px;
+  left: 849px;
+  background-color: var(--color-lightgreen);
+  width: 75px;
+  height: 7px;
+}
+.mock1Icon {
+  position: absolute;
+  scale: 3;
+  top: -10px;
+  left: 950px;
+  width: 1080px;
+  height: 1080px;
+  object-fit: contain;
+  z-index: 2;
+}
+.polygonParent {
+  height: 733px;
+  width: 1027px;
+  position: absolute;
+  margin: 0 !important;
+  right: -640px;
+  bottom: -400px;
+}
+.recyclingInfo {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  max-width: 100%;
+  text-align: left;
+  font-size: var(--font-size-45xl);
+  color: var(--color-yellowgreen-100);
+  font-family: var(--font-outfit);
+}
+@media screen and (max-width: 750px) {
+  .wantToLearnContainer {
+    font-size: var(--font-size-32xl);
+    line-height: 48px;
+  }
+  .recycling {
+    font-size: var(--font-size-29xl);
+  }
+}
+@media screen and (max-width: 450px) {
+  .wantToLearnContainer {
+    font-size: var(--font-size-19xl);
+    line-height: 36px;
+  }
+  .recycling {
+    font-size: var(--font-size-10xl);
+  }
+}
