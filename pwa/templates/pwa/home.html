@@ -2,37 +2,43 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-    <title>Trash It - Capture and Analyze Trash</title>
-    <link rel="icon" type="image/x-icon" href="{% static 'pwa/images/logo.ico' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'pwa/css/styles.css' %}" />
-  </head>
-  <body>
-    <div id="logoContainer">
-      <img id="logo" src="{% static 'pwa/images/logo.png' %}" alt="Waste It Logo" />
-    </div>
-    
-    <div id="githubContainer">
-      <a href="https://github.com/shamsharoon/TrashTech" target="_blank">
-        <img id="githubLogo" src="{% static 'pwa/images/github.png' %}" alt="GitHub Logo" />
-      </a>
-    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="icon" href="{% static 'pwa/images/TrashTechFavicon.png' %}" rel="icon">
+    <link rel="stylesheet" href="{% static 'pwa/css/output.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Trash Tech</title>
+</head>
+<body>
+    <section>
+        <!-- Start of Desktop Nav -->
+        <nav>
+            <div class="logo"><img src="{% static 'pwa/images/techlogo.png' %}" alt="TrashTech"></div>
+            <ul>
+                <li>Visit</li>
+                <li>Contact</li>
+            </ul>
+            <img src="{% static 'pwa/images/Hamburger.png' %}" alt="Menu" class="menu-icon">
+        </nav>
+        
+        <!-- End of desktop Nav -->
 
-    <div id="captureContainer">
-      {% csrf_token %}
-      <video id="video" autoplay></video>
-      <button id="captureButton" class="btn">Take Picture</button>
-      <canvas id="capturedCanvas" style="display: none"></canvas>
-      <div id="buttonContainer">
-        <button id="freezeButton" class="btn" style="display: none">Analyze Picture</button>
-        <button id="resetButton" class="btn" style="display: none">Reset Picture</button>
-      </div>
-      <div id="resultContainer" class="resultContainer"></div>
-    </div>
-    <script src="{% static 'pwa/js/scripts.js' %}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  </body>
+        <div class="hero-section">
+            <div class="left">
+                <h1>Trash Detection,</h1>
+                <h1>Simplified</h1>
+                <a href="/app" class="btn md:hidden">Start<i class="fa-solid fa-play"></i></a>
+            </div>
+
+            <div class="right">
+                <a class="flex justify-center items-center" href="/app"><img src="{% static 'pwa/images/Camera-Cross.png' %}" alt="Camera"></a>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="main.js"></script>
+</body>
 </html>

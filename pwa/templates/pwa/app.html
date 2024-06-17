@@ -1,0 +1,161 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="icon" href="{% static 'pwa/images/TrashTechFavicon.png' %}" rel="icon">
+    <link rel="stylesheet" href="{% static 'pwa/css/output.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Trash Tech</title>
+</head>
+<body>
+    <div class="section1">
+        <!-- Start of Desktop Nav -->
+        <nav>
+            <div class="logo"><img src="{% static 'pwa/images/techlogo.png' %}" alt="TrashTech"></div>
+            <ul>
+                <li>Visit</li>
+                <li>Contact</li>
+            </ul>
+            <img src="{% static 'pwa/images/Hamburger.png' %}" alt="Menu" class="menu-icon">
+        </nav>
+        <!-- End of desktop Nav -->
+
+        <div id="captureContainer">
+      {% csrf_token %}
+      <div id="resultBox">
+        <p id="result" class="resultText"></p>
+      </div>
+      <video id="video" autoplay muted playsinline></video>
+      <button id="captureButton" class="btn">Take Picture</button>
+      <canvas id="capturedCanvas" style="display: none"></canvas>
+      <div id="buttonContainer" class="btnCon">
+        <button id="freezeButton" class="btnThing" style="display: none">
+          Analyze Picture
+        </button>
+        <button id="resetButton" class="btnThing" style="display: none">
+          Reset Picture
+        </button>
+      </div>
+    </div>
+    </div>
+    <script>
+        // Get DOM elements
+const captureButton = document.getElementById('captureButton');
+const video = document.getElementById('video');
+const freezeButton = document.getElementById('freezeButton');
+const capturedCanvas = document.getElementById('capturedCanvas');
+const capturedContext = capturedCanvas.getContext('2d');
+const resetButton = document.getElementById('resetButton');
+const resultText = document.getElementById('result');
+const resultBox = document.getElementById('resultBox');
+
+let stream;
+
+// Event listener for the "Take Picture" button
+captureButton.addEventListener('click', async () => {
+  try {
+    // Access the device camera
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'environment' },
+    });
+
+    // Set the camera feed as the source for the video element
+    video.srcObject = stream;
+
+    // Display other buttons and hide the capture button
+    freezeButton.style.display = 'block';
+    resetButton.style.display = 'block';
+    captureButton.style.display = 'none';
+  } catch (error) {
+    console.error('Error accessing camera:', error);
+  }
+});
+
+// Event listener for the "Analyze Picture" button
+freezeButton.addEventListener('click', async () => {
+  // Set the canvas dimensions to match the video feed
+  capturedCanvas.style.width = "540px";
+  capturedCanvas.style.height = "480px";
+  capturedCanvas.style.borderRadius = "10px";
+
+  // Draw the video feed onto the canvas
+  capturedContext.drawImage(
+    video,
+    0,
+    0,
+    capturedCanvas.width,
+    capturedCanvas.height
+  );
+
+  // Display the captured image and hide the video feed
+  video.style.display = 'none';
+  capturedCanvas.style.display = 'block';
+
+  // Stop the video stream
+  if (stream) {
+    const tracks = stream.getTracks();
+    tracks.forEach((track) => track.stop());
+  }
+
+  // Convert the captured image to base64-encoded JPEG format
+  const imageData = capturedCanvas.toDataURL('image/jpeg');
+
+  // Get the CSRF token from the form
+  var csrfToken = $('[name=csrfmiddlewaretoken]').val();
+
+  try {
+    // Send the captured image data to the server for analysis
+    const response = await fetch('/analyze_picture/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrfToken,
+      },
+      body: JSON.stringify({ image_data: imageData }),
+    });
+
+    // Parse the response as JSON
+    const data = await response.json();
+
+    // Display the analysis result on the same page
+    resultText.style.fontSize = '24px';
+    resultBox.style.width = '50%';
+    resultBox.style.borderRadius = '10px';
+    resultText.style.textAlign = 'center';
+
+    if (data.result) {
+      resultText.innerHTML = 'This item is recyclable!';
+      resultBox.style.border = '3px solid green';
+    } else {
+      resultText.innerHTML = 'This item is not recyclable.';
+      resultBox.style.border = '3px solid red';
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+});
+
+// Event listener for the "Reset Picture" button
+resetButton.addEventListener('click', () => {
+  // Reset the state and allow capturing another picture
+  video.style.display = 'block';
+  capturedCanvas.style.display = 'none';
+  freezeButton.style.display = 'block';
+  resetButton.style.display = 'block';
+  resultText.innerHTML = '';
+  resultBox.style.border = 'none';
+
+  // Stop the video stream
+  if (stream) {
+    const tracks = stream.getTracks();
+    tracks.forEach((track) => track.stop());
+  }
+});
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</body>
+</html>

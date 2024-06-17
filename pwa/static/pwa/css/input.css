@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root{
+    --primary-color: #8cc63f;
+    --secondary-color: #CAE4A6;
+    --white-color: #fff;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+}
+
+body {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
+#captureContainer{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 10%;
+}
+
+ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+}
+
+li{
+    font-weight: 900;
+    font-size: 20px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.hero-captureContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10%;
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.left h1{
+    font-size: 64px;
+    font-weight: 900;
+    margin: 0;
+    line-height: 1.1;
+    color: var(--primary-color);
+}
+
+.right img{
+    animation: hovering 2s infinite;
+}
+
+.left .btn, .btn, .savePic{
+    height: 70px;
+    width: 414px;
+    background-color: var(--secondary-color);
+    border-radius: 52px;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.btnThing{
+    height: 70px;
+    width: 214px;
+    background-color: var(--secondary-color);
+    border-radius: 52px;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+p{
+    text-align: center;
+}
+
+.savePic{
+    max-width: 414px;
+    width: 80%;
+}
+
+.captureContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.camera-captureContainer canvas{
+    border-radius: 48px ;
+    height: 530px;
+    width: 630px;
+}
+
+.hidden{
+    display: none;
+}
+
+.menu-icon{
+    display: none;
+}
+
+video{
+    border-radius: 23px;
+}
+
+.btnCon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.section1{
+    width: 90%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 768px){
+    .logo{
+        width: 50%;
+    }
+
+    captureContainer{
+        width: 80%;
+    }
+
+    .hero-captureContainer{
+        flex-direction: column;
+        margin: 0;
+        display: block;
+    }
+
+
+    nav ul{
+        display: none;
+    }
+
+    .menu-icon{
+        display: block;
+        width: 10%;
+    }
+
+    .btn{
+        width: 156px;
+    }
+
+    .btnThing{
+        width: 100px;
+        height: 50px;
+        font-size: 16px;
+    }
+
+    nav{
+        margin-bottom: 30%;
+    }
+
+
+    .left h1{
+        font-size: 8vw;
+        width: 90%;
+    }
+
+    .left .btn{
+        display: none;
+    }
+    
+
+
+    .right img{
+        width: 80%;
+    }
+
+    .right{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40%;
+    }
+
+    .camera-captureContainer{
+        margin-top: 20px;
+    }
+
+    .camera-captureContainer canvas{
+        border-radius: 48px ;
+        height: 530px;
+        width: 630px;
+    }
+    
+}
+
+@keyframes hovering {
+    0% {
+        transform: scale(0.9);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.9);
+    }
+}
